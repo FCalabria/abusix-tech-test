@@ -1,0 +1,29 @@
+{
+  "name": "2021_abusix-frontend-coding-challenge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "apiinstall": "cd api && npm install",
+    "clientinstall": "cd client && npm install",
+    "setup": "npm-run-all --parallel apiinstall clientinstall",
+    "postinstall": "npm run setup",
+    "client": "cd client && npm run start",
+    "api": "cd api && npm run start",
+    "dev": "npm-run-all --parallel api client",
+    "cypress": "wait-on http://localhost:3000 && cypress open",
+    "test": "npm-run-all --parallel dev cypress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FCalabria/abusix-tech-test.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FCalabria/abusix-tech-test/issues"
+  },
+  "homepage": "https://github.com/FCalabria/abusix-tech-test#readme",
+  "devDependencies": {
+    "npm-run-all": "^4.1.5"
+  }
+}
