@@ -1,24 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { Pane, Heading, majorScale } from 'evergreen-ui'
+import EventsTable from './components/EventsTable'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <>
+      <header>
+        <Pane padding={majorScale(2)} background="blueTint">
+          <Heading is="h1" size={800}>Abuse events</Heading>
+        </Pane>
       </header>
-    </div>
+      <main>
+        <Pane padding={majorScale(2)}>
+          <EventsTable />
+        </Pane>
+      </main>
+    </>
   );
 }
 
