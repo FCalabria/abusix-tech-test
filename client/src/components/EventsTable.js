@@ -9,7 +9,7 @@ function EventsTable() {
       <Table>
         <Table.Head>
           <Table.TextHeaderCell>Id</Table.TextHeaderCell>
-          <Table.TextHeaderCell>Created at</Table.TextHeaderCell>
+          <Table.TextHeaderCell>Timestamp</Table.TextHeaderCell>
           <Table.TextHeaderCell>Client IP</Table.TextHeaderCell>
           <Table.TextHeaderCell>Event type</Table.TextHeaderCell>
           <Table.TextHeaderCell>Reporter email</Table.TextHeaderCell>
