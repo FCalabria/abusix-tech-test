@@ -42,7 +42,7 @@ The following requirements should be met:
 
 As a user,
 
-- [ ] I can access all existing abuse events, with at least the following fields:
+- [x] I can access all existing abuse events, with at least the following fields:
   - `id` -> "ID"
   - `createdAt` -> "Timestamp"
   - `client.ip` -> "Client IP"

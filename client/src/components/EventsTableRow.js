@@ -5,9 +5,9 @@ function EventsTableRow ({event}) {
     <Table.Row>
       <Table.TextCell isNumber>{event.id}</Table.TextCell>
       <Table.TextCell>{event.createdDate}</Table.TextCell>
-      <Table.TextCell isNumber>{event.client.ip}</Table.TextCell>
+      <Table.TextCell isNumber>{event.client?.ip}</Table.TextCell>
       <Table.TextCell>{event.type}</Table.TextCell>
-      <Table.TextCell>{event.reporter.email}</Table.TextCell>
+      <Table.TextCell>{event.reporter?.email}</Table.TextCell>
     </Table.Row>
   )
 }

@@ -1,32 +1,30 @@
 const EVENTS_URL = `${process.env.REACT_APP_API_ENDPOINT}/events`
-let linkParams = {
-  first: '',
-  prev: '',
-  next: '',
-  last: ''
-};
-function setLinkParams (respHeaders) {
-  const link = respHeaders.get('Link').split(', ')
-  linkParams = link.reduce((params, param) => {
-    const [, value, key] = param.match(/<(.*)>; rel="(.*)"/)
-    params[key] = value
-    return params
-  }, {})
+
+function getTotalPages (respHeaders) {
+  const link = respHeaders.get('Link')
+  const [, last] = link.match(/.*_page=(\d*).*>; rel="last"/)
+  return parseInt(last)
 }
 function eventDecorator (event) {
   event.createdDate = new Date(event.createdAt).toLocaleString()
   return event
 }
 const eventsService = {
-  getEvents: () => {
-    return fetch(`${EVENTS_URL}?_page=1&_limit=20`)
+  getEvents: (page = 1) => {
+    return fetch(`${EVENTS_URL}?_page=${page}&_limit=20`)
     .then(resp => {
       if (!resp.ok) {
         throw new Error('Something went wrong fetching /events')
       }
-      setLinkParams(resp.headers)
+      const total = getTotalPages(resp.headers)
       return resp.json()
-        .then(resp => resp.map(eventDecorator))
+        .then(resp => ({
+          pagination: {
+            current: page,
+            total
+          },
+          data: resp.map(eventDecorator)
+        }))
     })
   }
 }
