@@ -48,7 +48,7 @@ As a user,
   - `client.ip` -> "Client IP"
   - `type` -> "Event Type"
   - `reporter.email` -> "Reporter Email"
-- [ ] I can sort the abuse events by all fields, except "ID"
+- [x] I can sort the abuse events by all fields, except "ID"
   - by default, the events should be ordered by "Timestamp"
 - [ ] I can filter for abuse events by
   - "Event Type"
