@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import eventsService from '../services/events'
 import { toaster } from 'evergreen-ui'
 
-function useEvents () {
+function useEvents(page, sortingField, sortingOrder) {
   const [events, setEvents] = useState([])
   const [loading, setLoading] = useState(false)
   const [pageInfo, setPageInfo] = useState({
@@ -10,9 +10,9 @@ function useEvents () {
     total: NaN
   })
 
-  function loadEvents(page) {
+  function loadEvents(page, sortBy, sortOrder) {
     setLoading(true)
-    eventsService.getEvents(page)
+    eventsService.getEvents(page, sortBy, sortOrder)
       .then(ev => {
         setEvents(ev.data)
         setPageInfo(ev.pagination)
@@ -27,7 +27,10 @@ function useEvents () {
         console.error(error)
       })
   }
-  useEffect(() => loadEvents(), [])
+  useEffect(
+    () => loadEvents(page, sortingField, sortingOrder),
+    [page, sortingField, sortingOrder]
+  )
   return {
     events,
     loading,

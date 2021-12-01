@@ -10,8 +10,8 @@ function eventDecorator (event) {
   return event
 }
 const eventsService = {
-  getEvents: (page = 1) => {
-    return fetch(`${EVENTS_URL}?_page=${page}&_limit=20`)
+  getEvents: (page = 1, sort = 'createdAt', sortOrder = 'asc') => {
+    return fetch(`${EVENTS_URL}?_page=${page}&_limit=20&_sort=${sort}&_order=${sortOrder}`)
     .then(resp => {
       if (!resp.ok) {
         throw new Error('Something went wrong fetching /events')
